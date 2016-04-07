@@ -5,16 +5,30 @@ Copy files between computers with different protocols.
 Data model
 ----------
 tom-sync is an abstract way of versioning a particular directory.
-The directory contains a `.tomsync` file with one of the following.
+The directory contains a `.tomsync` file that specifies the transfer
+protocol and the remote location.
 
-* rsync-public
-* rsync-private
-* git-public
-* fossil-public
-* fossil-private
+The transfer protocol is one of the following.
 
-Storage
-^^^^^^^
+* `rsync-public`
+* `rsync-private`
+* `git-public`
+* `fossil-public`
+* `fossil-private`
+
+The remote location is a list of host-directory pairs.
+Here are some common remotes.
+
+* `nsa:public/tom-sync`
+* `nsa:private/tom-sync`
+* `github:tlevine/tom-sync`
+* `gitlab:tlevine/tom-sync`
+
+On nsa the `public` directory gets served to the web, and the private
+directory does not.
+
+rsync-public
+^^^^^^^^^^^^^
 
 User interface
 --------------

@@ -1,0 +1,17 @@
+tom-sync
+========
+Copy files between computers with different protocols.
+
+These commands are available
+
+    _ init rsync-public
+    _ init rsync-private
+    _ init git-public
+    _ init fossil-public
+    _ init fossil-private
+    _ commit
+    _ push
+
+I can use the first letter of each subcommand (that is, "i", "c", or
+"p") instead of the full word. Subsubcommands (like "rsync-private")
+must be written out in full.

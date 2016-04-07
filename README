@@ -19,8 +19,9 @@ The transfer protocol is one of the following.
 The remote location is a list of host-directory pairs.
 Here are some common remotes.
 
-* `nsa:public/tom-sync`
-* `nsa:private/tom-sync`
+* `nsa:public/tom-sync/rsync`
+* `nsa:public/tom-sync/git`
+* `nsa:private/tom-sync/fossil`
 * `github:tlevine/tom-sync`
 * `gitlab:tlevine/tom-sync`
 
@@ -43,20 +44,37 @@ git-public directories are transferred with `git push` and `git pull`.
 Use git commands if you want to do anything else.
 
 On nsa resulting repository is checked out in a post-receive hook and
-then is served as static files from Apache. Routes containing a ".git"
-directory are not served, though, because then bots download lots of
-small files and use lots of resources.
+then is served as static files from Apache. The ".git" directories are
+not served, though, because then bots download lots of small files and
+use lots of resources.
 
 fossil-public
 ^^^^^^^^^^^^^
 fossil-public directories are transferred with `fossil sync`.
 (Is that right?)
 
-They are served from apache as
+On nsa they are served from apache as
 [CGI programs](https://www.fossil-scm.org/index.html/doc/trunk/www/server.wiki)
 
 rsync-private
 ^^^^^^^^^^^^^
+rsync-private directories are first encrypted at the file level.
+Directory structures and file names are not encrypted; only the file
+contents are encrypted. The encrypted files are stored on the server.
+
+Here are two approaches to encrypting the files locally.
+
+1. Put unencrypted files in an EncFS or PEFS, and synchronize the
+   underlying encrypted files.
+2. Encrypt individual files with GPG in a temporary directory, and
+   synchronize the GPG-encrypted files.
+
+A disadvantage of the first approach is that it is less portable and
+might be more annoying to set up. In particular, I might wind up stuck
+with a Linux kernel or a BSD kernel.
+
+The only issue I see with the second approach is that it might take
+longer to write. But it also might not.
 
 User interface
 --------------

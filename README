@@ -4,9 +4,7 @@ Copy files between computers with different protocols.
 
 Data model
 ----------
-tom-sync is an abstract way of versioning a particular directory.
-The directory contains a `.tomsync` file that specifies the transfer
-protocol and the remote location.
+tom-sync versions directories.
 
 The transfer protocol is one of the following.
 
@@ -90,21 +88,21 @@ User interface
 --------------
 These commands are available
 
-    _ init rsync-public [name]
-    _ init rsync-private [name]
-    _ init git-public [name]
-    _ init fossil-public [name]
-    _ init fossil-private [name]
-    _ commit
-    _ push
-    _ fetch
+    tom-sync init rsync-public [name]
+    tom-sync init rsync-private [name]
+    tom-sync init git-public [name]
+    tom-sync init fossil-public [name]
+    tom-sync init fossil-private [name]
+    tom-sync commit
+    tom-sync push
+    tom-sync fetch
 
 The following aliases should also be set.
 
-    alias i=_\ i
-    alias j=_\ j
-    alias p=_\ p
-    alias f=_\ f
+    alias i=tom-sync\ i
+    alias j=tom-sync\ j
+    alias p=tom-sync\ p
+    alias f=tom-sync\ f
 
 The `commit`, `push`, and `fetch` commands are translated to appropriate
 protocol-specific commands.
@@ -123,3 +121,26 @@ The `init` command does this.
    whether you want to import the project from there. If you say no,
    tom-sync exits.
 6. tom-sync pushes the project to all remotes.
+
+Protocol choices
+------------------
+I wound up with five transfer protocols; here is how I chose them.
+
+I want to be able to back up, version, and maybe share any project that
+I might make. I group software for this sort of thing into two
+categories.
+
+* Software designed for small text files with short lines that are
+  rewritten infrequently, accompanied with tools for inspecting and
+  annotating the changes in detail (fossil, git, darcs, &c.).
+* Software designed for large arbitrarily-formatted files and with
+  relatively simple tools, if any, for inspecting history
+  (rsync, obnam, duplicity, &c.)
+
+* `rsync-public`
+* `git-public`
+* `fossil-public`
+* `rsync-private`
+* `fossil-private`
+
+

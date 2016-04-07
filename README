@@ -176,11 +176,15 @@ git for my personal stuff, so I don't need encrypt to it.
 
 Large backups
 ^^^^^^^^^^^^^
-I considered the following softwares for large backups.
+I chose obnam because it seems simple, I understood how to use it, and
+it has simple encryption. The only other one that I seriously considered
+was [duplicity](http://duplicity.nongnu.org/). I chose between them
+based on these things.
 
-* rdiff
-* duplicity
-* obnam
+* I previously was disappointed with duplicity.
+* Joey Hess uses obnam.
+* [Joey Hess's comments](https://joeyh.name/blog/entry/trying_obnam/)
+  on obnam make sense.
 
 I rejected others on the following grounds.
 
@@ -188,6 +192,8 @@ I rejected others on the following grounds.
 * File-sync software like rsync and bittorrent are inappropriate because
   they do not maintain revision history.
 * [dar](http://dar.linux.free.fr) seems more powerful than I need.
+* [rdiff-backup](http://www.nongnu.org/rdiff-backup/) doesn't have
+  built-in encryption.
 
 It might be worth noting that I have known about some of these softwares
 for a while.

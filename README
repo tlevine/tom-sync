@@ -11,9 +11,9 @@ protocol and the remote location.
 The transfer protocol is one of the following.
 
 * `rsync-public`
-* `rsync-private`
 * `git-public`
 * `fossil-public`
+* `rsync-private`
 * `fossil-private`
 
 The remote location is a list of host-directory pairs.
@@ -28,6 +28,34 @@ On nsa the `public` directory gets served to the web, and the private
 directory does not.
 
 rsync-public
+^^^^^^^^^^^^
+rsync-public directories are transferred between local and remote with
+`rsync --archive --exclude=.tomsync`.
+I don't use `--delete` because it's too easy to lose
+data by accident that way. I should really switch rsync for something
+else that has some versioning.
+
+On nsa resulting directory is served as static files from Apache.
+
+git-public
+^^^^^^^^^^
+git-public directories are transferred with `git push` and `git pull`.
+Use git commands if you want to do anything else.
+
+On nsa resulting repository is checked out in a post-receive hook and
+then is served as static files from Apache. Routes containing a ".git"
+directory are not served, though, because then bots download lots of
+small files and use lots of resources.
+
+fossil-public
+^^^^^^^^^^^^^
+fossil-public directories are transferred with `fossil sync`.
+(Is that right?)
+
+They are served from apache as
+[CGI programs](https://www.fossil-scm.org/index.html/doc/trunk/www/server.wiki)
+
+rsync-private
 ^^^^^^^^^^^^^
 
 User interface

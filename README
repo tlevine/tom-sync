@@ -41,8 +41,11 @@ These commands are available
     _ init fossil-private
     _ commit
     _ push
-    _ pull
+    _ fetch
 
-I can use the first letter of each subcommand (that is, "i", "c", or "p")
-instead of the full word. Subsubcommands (like "rsync-private") must be
-written out in full.
+The following aliases should also be set.
+
+    alias i=_\ i
+    alias j=_\ j
+    alias p=_\ p
+    alias f=_\ f

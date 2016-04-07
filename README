@@ -2,6 +2,22 @@ tom-sync
 ========
 Copy files between computers with different protocols.
 
+Data model
+----------
+tom-sync is an abstract way of versioning a particular directory.
+The directory contains a `.tomsync` file with one of the following.
+
+* rsync-public
+* rsync-private
+* git-public
+* fossil-public
+* fossil-private
+
+Storage
+^^^^^^^
+
+User interface
+--------------
 These commands are available
 
     _ init rsync-public
@@ -11,7 +27,8 @@ These commands are available
     _ init fossil-private
     _ commit
     _ push
+    _ pull
 
-I can use the first letter of each subcommand (that is, "i", "c", or
-"p") instead of the full word. Subsubcommands (like "rsync-private")
-must be written out in full.
+I can use the first letter of each subcommand (that is, "i", "c", or "p")
+instead of the full word. Subsubcommands (like "rsync-private") must be
+written out in full.

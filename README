@@ -156,6 +156,19 @@ For text backups I want the following features.
 * Create few files. This is partly so that I can easily encrypt the
   repository. (Git's large directory is annoying to copy.)
 
+The main candidates for text backups are fossil and monotone.
+
+* Both are distributed version control softwares (DVCS).
+* Both store their data in a single SQLite file.
+* Both have tools for rendering pretty web pages about the repository.
+
+I slightly preferred fossil because the documentation generally made
+more sense to me and because I thought the built-in web server, wiki,
+and bug tracking would be easier to run than external monotone tools.
+
+I rejected other DVCSs on the because they store data in lots of small
+files and are thus more annoying to download, encrypt, and serve.
+
 * `rsync-public`
 * `git-public`
 * `fossil-public`

@@ -168,11 +168,5 @@ and bug tracking would be easier to run than external monotone tools.
 
 I rejected other DVCSs on the because they store data in lots of small
 files and are thus more annoying to download, encrypt, and serve.
-
-* `rsync-public`
-* `git-public`
-* `fossil-public`
-* `rsync-private`
-* `fossil-private`
-
-
+That said, I still support git because it is very popular. I won't use
+git for my personal stuff, so I don't need encrypt to it.

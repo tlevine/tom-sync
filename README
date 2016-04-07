@@ -16,14 +16,19 @@ The transfer protocol is one of the following.
 * `rsync-private`
 * `fossil-private`
 
-The remote location is a list of host-directory pairs.
+The remote location is a list of host-path pairs.
 Here are some common remotes.
 
 * `nsa:public/tom-sync/rsync`
 * `nsa:public/tom-sync/git`
+* `nsa:public/tom-sync/fossil`
+* `nsa:private/tom-sync/rsync`
 * `nsa:private/tom-sync/fossil`
 * `github:tlevine/tom-sync`
 * `gitlab:tlevine/tom-sync`
+
+(Actually, maybe I just don't have this at all; I'm designing this
+specifically for my own systems and the name is always the directory.)
 
 On nsa the `public` directory gets served to the web, and the private
 directory does not.
@@ -76,15 +81,20 @@ with a Linux kernel or a BSD kernel.
 The only issue I see with the second approach is that it might take
 longer to write. But it also might not.
 
+fossil-private
+^^^^^^^^^^^^^^^
+Instead of using fossil's built-in synchronization, encrypt the fossil
+repository and copy that to the
+
 User interface
 --------------
 These commands are available
 
-    _ init rsync-public
-    _ init rsync-private
-    _ init git-public
-    _ init fossil-public
-    _ init fossil-private
+    _ init rsync-public [name]
+    _ init rsync-private [name]
+    _ init git-public [name]
+    _ init fossil-public [name]
+    _ init fossil-private [name]
     _ commit
     _ push
     _ fetch
@@ -95,3 +105,21 @@ The following aliases should also be set.
     alias j=_\ j
     alias p=_\ p
     alias f=_\ f
+
+The `commit`, `push`, and `fetch` commands are translated to appropriate
+protocol-specific commands.
+
+The `init` command does this.
+
+1. Use the name argument as the name if such an argument is passed;
+   otherwise, default to the basename of the working directory.
+2. If the project is on nsa, tom-sync reports the protocol of the project.
+3. If the protocol is git-public or fossil-public or if the project is
+   not on nsa, tom-sync also reports whether a project with that name is
+   on github and gitlab.
+4. If the project is on nsa, tom-sync asks whether you want to fetch the
+   project from nsa. If you say no, tom-sync exits.
+5. If the project is not on nsa but is somewhere else, tom-sync asks
+   whether you want to import the project from there. If you say no,
+   tom-sync exits.
+6. tom-sync pushes the project to all remotes.

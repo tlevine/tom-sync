@@ -130,12 +130,31 @@ I want to be able to back up, version, and maybe share any project that
 I might make. I group software for this sort of thing into two
 categories.
 
-* Software designed for small text files with short lines that are
-  rewritten infrequently, accompanied with tools for inspecting and
-  annotating the changes in detail (fossil, git, darcs, &c.).
-* Software designed for large arbitrarily-formatted files and with
-  relatively simple tools, if any, for inspecting history
-  (rsync, obnam, duplicity, &c.)
+Text backups
+    Software designed for small text files with short lines that are
+    rewritten infrequently, accompanied with tools for inspecting and
+    annotating the changes in detail (fossil, git, darcs, &c.).
+Large backups
+    Software designed for large arbitrarily-formatted files and with
+    relatively simple tools, if any, for inspecting history
+    (rsync, obnam, duplicity, &c.)
+
+In both cases I want software with the following properties.
+
+* The software is simple with insignificant dependencies.
+* In particular, the server must have insignificant dependencies for
+  receiving updates (not for serving them to the web); dependencies
+  should be at least as ubiquitious as rsync.
+* I should be able to revert old versions.
+* I should be able to understand my backups, especially encrypted
+  backups, without knowing what software created them.
+
+For text backups I want the following features.
+
+* Support complex branching and merging (distributed version control).
+* Easily serve the repository as a website.
+* Create few files. This is partly so that I can easily encrypt the
+  repository. (Git's large directory is annoying to copy.)
 
 * `rsync-public`
 * `git-public`

@@ -181,11 +181,25 @@ I considered the following softwares for large backups.
 * rdiff
 * duplicity
 * obnam
-* dar
 
 I rejected others on the following grounds.
 
 * [Box Backup](http://www.boxbackup.org/) has a client daemon.
 * File-sync software like rsync and bittorrent are inappropriate because
   they do not maintain revision history.
+* [dar](http://dar.linux.free.fr) seems more powerful than I need.
 
+
+It might be worth noting that I have known about some of these softwares
+for a while.
+
+* I recall trying dar like ten years ago, I guess right after it came out,
+  and finding it too complex then too. I think I was backing up to CDs.
+* I tried duplicity like five years ago and preferred it but was still
+  not pleased. I recall backing up to Amazon's storage service, S3.
+* I heard about obnam like two years ago and was impressed but never set
+  it up. I suspect it's because I didn't have a good server to back
+  things up to or because I didn't trust myself at the time to manage
+  encryption keys well.
+* I had read about rdiff before but never tried it. I don't remember
+  why I never did.

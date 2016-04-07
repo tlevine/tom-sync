@@ -156,6 +156,8 @@ For text backups I want the following features.
 * Create few files. This is partly so that I can easily encrypt the
   repository. (Git's large directory is annoying to copy.)
 
+Text backups
+^^^^^^^^^^^^
 The main candidates for text backups are fossil and monotone.
 
 * Both are distributed version control softwares (DVCS).
@@ -170,3 +172,20 @@ I rejected other DVCSs on the because they store data in lots of small
 files and are thus more annoying to download, encrypt, and serve.
 That said, I still support git because it is very popular. I won't use
 git for my personal stuff, so I don't need encrypt to it.
+
+
+Large backups
+^^^^^^^^^^^^^
+I considered the following softwares for large backups.
+
+* rdiff
+* duplicity
+* obnam
+* dar
+
+I rejected others on the following grounds.
+
+* [Box Backup](http://www.boxbackup.org/) has a client daemon.
+* File-sync software like rsync and bittorrent are inappropriate because
+  they do not maintain revision history.
+
